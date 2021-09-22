@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-x30jno
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-x30jno
+  namespace: my-nginx-x30jno
+  labels:
+    name: nginx-x30jno
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-x30jno
+  template:
+    metadata:
+      namespace: my-nginx-x30jno
+      labels:
+        name: nginx-x30jno
+    spec:
+      containers:
+      - name: nginx-x30jno
+        image: nginx
+        ports:
+        - containerPort: 80
+
